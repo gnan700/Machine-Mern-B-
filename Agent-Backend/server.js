@@ -28,6 +28,9 @@ app.use("/api/auth", authRoutes)
 app.use("/api/agents", agentsRoutes)
 app.use("/api/upload", uploadRoutes)
 
+app.get("/", (req, res) => {
+  res.send("Backend is running!");
+});
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
