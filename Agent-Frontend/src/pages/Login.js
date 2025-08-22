@@ -15,7 +15,7 @@ const Login = () => {
 
   try {
     const response = await axios.post(
-      `${API_URL}/api/agents/login`, // include backend URL + login endpoint
+      `${API_URL}/api/auth/login`, // include backend URL + login endpoint
       { email, password },
       { headers: { "Content-Type": "application/json" } }
     );
