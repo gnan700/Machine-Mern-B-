@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
 
+const API_URL = "https://machine-mern-b-zbgj.onrender.com";
 const Login = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -9,20 +10,24 @@ const Login = () => {
   const navigate = useNavigate()
 
   const handleLogin = async (e) => {
-    e.preventDefault()
-    setError("")
+  e.preventDefault();
+  setError("");
 
-    try {
-      const response = await axios.post("http://localhost:3000/api/auth/login", {
-        email,
-        password,
-      })
-      localStorage.setItem("token", response.data.token)
-      navigate("/dashboard")
-    } catch (error) {
-      setError(error.response?.data?.error || "Login failed. Please try again.")
-    }
+  try {
+    const response = await axios.post(
+      `${API_URL}/api/agents/login`, // include backend URL + login endpoint
+      { email, password },
+      { headers: { "Content-Type": "application/json" } }
+    );
+
+    // Save token
+    localStorage.setItem("token", response.data.token);
+    navigate("/dashboard");
+  } catch (error) {
+    setError(error.response?.data?.error || "Login failed. Please try again.");
+    console.error("Login error:", error.response?.data || error.message);
   }
+};
 
   return (
     <div className="flex justify-center items-center h-screen bg-gray-100">
