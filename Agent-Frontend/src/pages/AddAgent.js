@@ -40,13 +40,13 @@ const AddAgent = () => {
     setMessage("")
   
     try {
-      const agentResponse = await axios.post("http://localhost:3000/api/agents/add", formData)
+      const agentResponse = await axios.post("https://machine-mern-b-zbgj.onrender.com/api/agents/add", formData)
       
       if (agentResponse.status === 201) {
         if (file) {
           const formDataFile = new FormData()
           formDataFile.append("file", file)
-          const uploadResponse = await axios.post("http://localhost:3000/api/upload/upload-file", formDataFile, {
+          const uploadResponse = await axios.post("https://machine-mern-b-zbgj.onrender.com/api/upload/upload-file", formDataFile, {
             headers: { "Content-Type": "multipart/form-data" },
           })
           if (uploadResponse.status === 200) {
