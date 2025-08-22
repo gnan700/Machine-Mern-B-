@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+const API_URL = "https://machine-mern-b-zbgj.onrender.com"; // your Render backend URL
+
 const Dashboard = () => {
   const [agents, setAgents] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -16,7 +18,7 @@ const Dashboard = () => {
           return;
         }
 
-        const response = await axios.get("http://localhost:3000/api/agents/list", {
+        const response = await axios.get(`${API_URL}/api/agents/list`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
