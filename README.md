@@ -130,4 +130,5 @@ Example frontend URL: `https://your-frontend.vercel.app`
 - Update API calls in frontend to use `REACT_APP_API_URL`.
 - Test login and dashboard after deployment to confirm everything works.
 
-
+## Backend URL:
+https://machine-mern-b-zbgj.onrender.com
