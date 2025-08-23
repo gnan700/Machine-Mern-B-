@@ -18,7 +18,7 @@ const UploadCSV = () => {
     formData.append("file", file)
 
     try {
-      const response = await axios.post("http://localhost:5000/api/upload/upload", formData, {
+      const response = await axios.post("https://machine-mern-b-zbgj.onrender.com/api/upload/upload", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       })
       setMessage(response.data.message)
